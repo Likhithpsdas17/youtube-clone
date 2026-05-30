@@ -1,0 +1,43 @@
+import express from "express";
+
+import authMiddleware from "../middleware/authMiddleware.js";
+
+import {
+  createVideo, 
+  getAllVideos,
+  getVideoById,
+  updateVideo,
+  deleteVideo,
+  likeVideo,
+  dislikeVideo,
+} from "../controllers/videoController.js";
+
+const router = express.Router();
+
+router.post(
+  "/",
+  authMiddleware,
+  createVideo,
+);
+
+router.get("/", getAllVideos);
+
+router.get("/:id", getVideoById);
+
+router.put(
+  "/:id",
+  authMiddleware,
+  updateVideo
+);
+
+router.delete(
+  "/:id",
+  authMiddleware,
+  deleteVideo
+);
+
+router.put("/:id/like", likeVideo);
+
+router.put("/:id/dislike", dislikeVideo);
+
+export default router;
