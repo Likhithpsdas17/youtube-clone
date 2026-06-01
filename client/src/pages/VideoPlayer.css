@@ -119,3 +119,15 @@
 .delete-comment-btn:hover {
   opacity: 0.9;
 }
+
+.comment-card button {
+  margin-right: 8px;
+  margin-top: 8px;
+}
+
+.comment-card input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
