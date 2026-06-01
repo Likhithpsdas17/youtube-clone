@@ -27,3 +27,14 @@
 .sidebar div:hover {
   background: #f5f5f5;
 }
+@media (max-width: 768px) {
+
+  .sidebar {
+    width: 70px;
+  }
+
+  .sidebar span {
+    display: none;
+  }
+
+}
