@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import API from "../services/api";
 import { useNavigate } from "react-router-dom";
+import API from "../services/api";
 import "./Channel.css";
 
 function Channel() {
+
   const [videos, setVideos] = useState([]);
   const [channel, setChannel] = useState(null);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,6 +16,7 @@ function Channel() {
 
   const fetchChannel = async () => {
     try {
+
       const token =
         localStorage.getItem("token");
 
@@ -42,6 +45,36 @@ function Channel() {
     }
   };
 
+  const deleteVideo = async (id) => {
+    try {
+
+      const token =
+        localStorage.getItem("token");
+
+      const confirmDelete =
+        window.confirm(
+          "Are you sure you want to delete this video?"
+        );
+
+      if (!confirmDelete) return;
+
+      await API.delete(
+        `/videos/${id}`,
+        {
+          headers: {
+            Authorization:
+              `Bearer ${token}`,
+          },
+        }
+      );
+
+      fetchChannel();
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   if (!channel) {
     return <h2>Loading...</h2>;
   }
@@ -55,20 +88,30 @@ function Channel() {
         className="channel-banner"
       />
 
-      <h1>
-        {channel.channelName}
-      </h1>
+      <div className="channel-details">
 
-      <p>
-        {channel.description}
-      </p>
+        <h1>
+          {channel.channelName}
+        </h1>
 
-      <p>
-        Subscribers: {channel.subscribers || 0}
-      </p>
-      <p>
-        Videos: {videos.length}
-      </p>
+        <p>
+          {channel.description}
+        </p>
+
+        <p>
+          Subscribers:
+          {" "}
+          {channel.subscribers || 0}
+        </p>
+
+        <p>
+          Videos:
+          {" "}
+          {videos.length}
+        </p>
+
+      </div>
+
       <h2>My Videos</h2>
 
       {videos.length === 0 ? (
@@ -80,21 +123,43 @@ function Channel() {
             <div
               key={video._id}
               className="channel-video-card"
-              onClick={() =>
-                navigate(`/video/${video._id}`)
-              }
             >
+
               <img
                 src={video.thumbnailUrl}
                 alt={video.title}
+                onClick={() =>
+                  navigate(`/video/${video._id}`)
+                }
               />
 
               <h4>{video.title}</h4>
+
+              <div className="video-actions">
+
+                <button
+                  className="edit-btn"
+                >
+                  Edit
+                </button>
+
+                <button
+                  className="delete-btn"
+                  onClick={() =>
+                    deleteVideo(video._id)
+                  }
+                >
+                  Delete
+                </button>
+
+              </div>
+
             </div>
           ))}
 
         </div>
       )}
+
     </div>
   );
 }

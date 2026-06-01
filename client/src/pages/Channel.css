@@ -74,3 +74,27 @@
   }
 
 }
+
+.video-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+  flex: 1;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background: #f1f1f1;
+}
+
+.delete-btn {
+  background: #ff4d4d;
+  color: white;
+}
