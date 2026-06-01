@@ -1,15 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import VideoPlayer from "./pages/VideoPlayer";
 import Channel from "./pages/Channel";
 import UploadVideo from "./pages/UploadVideo";
+import EditVideo from "./pages/EditVideo";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -30,12 +29,34 @@ function App() {
         }}
       >
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/video/:id" element={<VideoPlayer />} />
-          <Route path="/channel" element={<Channel />} />
-          <Route path="/upload" element={<UploadVideo />} />
+          <Route 
+            path="/" 
+            element={<Home />} 
+          />
+          <Route 
+            path="/login" 
+            element={<Login />} 
+          />
+          <Route 
+            path="/register" 
+            element={<Register />} 
+          />
+          <Route 
+            path="/video/:id" 
+            element={<VideoPlayer />} 
+          />
+          <Route 
+            path="/channel" 
+            element={<Channel />} 
+          />
+          <Route 
+            path="/upload" 
+            element={<UploadVideo />} 
+          />
+          <Route
+            path="/edit-video/:id"
+            element={<EditVideo />}
+          />
         </Routes>
       </div>
 
