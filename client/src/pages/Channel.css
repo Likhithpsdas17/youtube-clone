@@ -54,3 +54,23 @@
 .channel-video-card h4 {
   padding: 12px;
 }
+
+@media (max-width: 768px) {
+
+  .channel-banner {
+    height: 180px;
+  }
+
+  .channel-videos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .channel-videos {
+    grid-template-columns: 1fr;
+  }
+
+}

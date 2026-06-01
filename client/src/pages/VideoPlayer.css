@@ -89,3 +89,19 @@
 .comment-card h4 {
   margin-bottom: 5px;
 }
+
+@media (max-width: 768px) {
+
+  .video-player iframe {
+    height: 350px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .video-player iframe {
+    height: 220px;
+  }
+
+}
