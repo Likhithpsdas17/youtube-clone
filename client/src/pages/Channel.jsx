@@ -139,6 +139,9 @@ function Channel() {
 
                 <button
                   className="edit-btn"
+                  onClick={() =>
+                    navigate(`/edit-video/${video._id}`)
+                  }
                 >
                   Edit
                 </button>
