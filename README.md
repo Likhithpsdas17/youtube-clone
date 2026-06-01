@@ -119,7 +119,7 @@ youtube_clone/
 
 ### Clone Repository
 
-git clone <repository-url>
+GitHub: https://github.com/Likhithpsdas17/youtube-clone.git
 
 cd youtube_clone
 
