@@ -50,32 +50,40 @@ function VideoPlayer() {
     alert("Comment cannot be empty");
     return;
   }
-  
+
   const addComment = async () => {
-  try {
-    const token =
-      localStorage.getItem("token");
 
-    await API.post(
-      "/comments",
-      {
-        text,
-        videoId: id,
-      },
-      {
-        headers: {
-          Authorization:
-            `Bearer ${token}`,
+    if (!text.trim()) {
+      alert("Comment cannot be empty");
+      return;
+    }
+
+    try {
+
+      const token =
+        localStorage.getItem("token");
+
+      await API.post(
+        "/comments",
+        {
+          text,
+          videoId: id,
         },
-      }
-    );
+        {
+          headers: {
+            Authorization:
+              `Bearer ${token}`,
+          },
+        }
+      );
 
-    setText("");
+      setText("");
 
-    fetchComments();
-  } catch (error) {
-    console.log(error);
-  }
+      fetchComments();
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteComment = async (commentId) => {
