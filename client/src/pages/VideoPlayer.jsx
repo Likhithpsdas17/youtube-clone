@@ -8,7 +8,8 @@ function VideoPlayer() {
   const [video, setVideo] = useState(null);
   const [comments, setComments] = useState([]);
   const [text, setText] = useState("");
-
+  const [editingComment, setEditingComment] = useState(null);
+  const [editText, setEditText] = useState("");
   useEffect(() => {
     fetchVideo();
     fetchComments();
