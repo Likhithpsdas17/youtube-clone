@@ -103,6 +103,34 @@ function VideoPlayer() {
   }
 };
 
+    const updateComment = async (commentId) => {
+    try {
+
+      const token =
+        localStorage.getItem("token");
+
+      await API.put(
+        `/comments/${commentId}`,
+        {
+          text: editText,
+        },
+        {
+          headers: {
+            Authorization:
+              `Bearer ${token}`,
+          },
+        }
+      );
+
+      setEditingComment(null);
+      setEditText("");
+
+      fetchComments();
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleLike = async () => {
   try {
     const token =
@@ -236,16 +264,70 @@ function VideoPlayer() {
                 {comment.user?.username}
               </h4>
 
-              <p>{comment.text}</p>
+              {editingComment === comment._id ? (
+                <>
 
-              <button
-                className="delete-comment-btn"
-                onClick={() =>
-                  deleteComment(comment._id)
-                }
-              >
-                Delete
-              </button>
+                  <input
+                    type="text"
+                    value={editText}
+                    onChange={(e) =>
+                      setEditText(
+                        e.target.value
+                      )
+                    }
+                  />
+
+                  <button
+                    onClick={() =>
+                      updateComment(
+                        comment._id
+                      )
+                    }
+                  >
+                    Save
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      setEditingComment(
+                        null
+                      )
+                    }
+                  >
+                    Cancel
+                  </button>
+
+                </>
+              ) : (
+                <>
+                  <p>{comment.text}</p>
+
+                  <button
+                    onClick={() => {
+                      setEditingComment(
+                        comment._id
+                      );
+
+                      setEditText(
+                        comment.text
+                      );
+                    }}
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    className="delete-comment-btn"
+                    onClick={() =>
+                      deleteComment(
+                        comment._id
+                      )
+                    }
+                  >
+                    Delete
+                  </button>
+                </>
+              )}
 
             </div>
           ))
