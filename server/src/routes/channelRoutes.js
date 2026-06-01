@@ -2,14 +2,14 @@ import express from "express";
 
 import authMiddleware from "../middleware/authMiddleware.js";
 
-import { createChannel, getChannelById, getMyChannel } from "../controllers/channelController.js";
+import { createChannel, getChannelById, getMyChannel, updateChannel } from "../controllers/channelController.js";
 
 const router = express.Router();
 
 router.post(
   "/",
   authMiddleware,
-  createChannel
+  createChannel,
 );
 
 router.get(
@@ -19,5 +19,11 @@ router.get(
 );
 
 router.get("/:id", getChannelById);
+
+router.put(
+  "/",
+  authMiddleware,
+  updateChannel
+);
 
 export default router;

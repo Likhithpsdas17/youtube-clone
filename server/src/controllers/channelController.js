@@ -76,3 +76,30 @@ export const getMyChannel = async (req, res) => {
     });
   }
 };
+
+export const updateChannel = async (req, res) => {
+  try {
+    const channel = await Channel.findOne({
+      owner: req.user._id,
+    });
+
+    if (!channel) {
+      return res.status(404).json({
+        message: "Channel not found",
+      });
+    }
+
+    const updatedChannel =
+      await Channel.findByIdAndUpdate(
+        channel._id,
+        req.body,
+        { new: true }
+      );
+
+    res.status(200).json(updatedChannel);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
