@@ -244,4 +244,4 @@ This project helped in understanding:
 
 Likhith P S Das
 
-Full Stack Developer | MERN Stack Enthusiast
+Frontend Developer | MERN Stack Developer | Full Stack Developer 
