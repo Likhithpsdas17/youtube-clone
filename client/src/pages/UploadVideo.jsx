@@ -21,20 +21,21 @@ function UploadVideo() {
     });
   };
 
-  if (
-    !formData.title ||
-    !formData.description ||
-    !formData.videoUrl ||
-    !formData.thumbnailUrl ||
-    !formData.category
-  ) {
-    alert("Please fill all fields");
-    return;
-  }
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
+    if (
+      !formData.title ||
+      !formData.description ||
+      !formData.videoUrl ||
+      !formData.thumbnailUrl ||
+      !formData.category
+    ) {
+      alert("Please fill all fields");
+      return;
+    }
+    
     try {
       const token =
         localStorage.getItem("token");
