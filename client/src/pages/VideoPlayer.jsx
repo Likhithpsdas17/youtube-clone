@@ -72,6 +72,36 @@ function VideoPlayer() {
   }
   };
 
+  const deleteComment = async (commentId) => {
+  try {
+
+    const token =
+      localStorage.getItem("token");
+
+    const confirmDelete =
+      window.confirm(
+        "Delete this comment?"
+      );
+
+    if (!confirmDelete) return;
+
+    await API.delete(
+      `/comments/${commentId}`,
+      {
+        headers: {
+          Authorization:
+            `Bearer ${token}`,
+        },
+      }
+    );
+
+    fetchComments();
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
   const handleLike = async () => {
   try {
     const token =
@@ -200,11 +230,22 @@ function VideoPlayer() {
               key={comment._id}
               className="comment-card"
             >
+
               <h4>
                 {comment.user?.username}
               </h4>
 
               <p>{comment.text}</p>
+
+              <button
+                className="delete-comment-btn"
+                onClick={() =>
+                  deleteComment(comment._id)
+                }
+              >
+                Delete
+              </button>
+
             </div>
           ))
         )}
