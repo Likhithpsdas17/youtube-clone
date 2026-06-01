@@ -1,0 +1,91 @@
+.video-player {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.video-thumbnail {
+  width: 100%;
+  height: 500px;
+  border: none;
+  border-radius: 12px;
+}
+
+.video-details {
+  margin-top: 20px;
+}
+
+.video-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.video-details p {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.video-actions {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.video-actions button {
+  border: none;
+  padding: 12px 20px;
+  border-radius: 20px;
+  background: #f2f2f2;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.video-actions button:hover {
+  background: #e0e0e0;
+}
+
+.channel-info {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.comments-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.comment-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.comment-form button {
+  border: none;
+  padding: 12px 20px;
+  background: black;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.comment-card {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.comment-card h4 {
+  margin-bottom: 5px;
+}

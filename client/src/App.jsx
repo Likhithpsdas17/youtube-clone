@@ -1,34 +1,44 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
-import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
-import Register from "./pages/Register/Register";
-import VideoPlayer from "./pages/VideoPlayer/VideoPlayer";
-import Channel from "./pages/Channel/Channel";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import VideoPlayer from "./pages/VideoPlayer";
+import Channel from "./pages/Channel";
+import UploadVideo from "./pages/UploadVideo";
 
 function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
 
-        <Route path="/login" element={<Login />} />
+      <Header setSidebarOpen={setSidebarOpen} />
 
-        <Route
-          path="/register"
-          element={<Register />}
-        />
+      <Sidebar sidebarOpen={sidebarOpen} />
 
-        <Route
-          path="/video/:id"
-          element={<VideoPlayer />}
-        />
+      <div
+        style={{
+          marginLeft: sidebarOpen ? "220px" : "20px",
+          marginTop: "100px",
+          padding: "20px",
+          transition: "0.3s"
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/video/:id" element={<VideoPlayer />} />
+          <Route path="/channel" element={<Channel />} />
+          <Route path="/upload" element={<UploadVideo />} />
+        </Routes>
+      </div>
 
-        <Route
-          path="/channel"
-          element={<Channel />}
-        />
-      </Routes>
     </BrowserRouter>
   );
 }
