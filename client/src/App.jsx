@@ -1,7 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import ProtectedRoute from "./components/ProtectedRoute";
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -11,53 +14,90 @@ import UploadVideo from "./pages/UploadVideo";
 import EditVideo from "./pages/EditVideo";
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  const [sidebarOpen, setSidebarOpen] =
+    useState(true);
 
   return (
     <BrowserRouter>
 
-      <Header setSidebarOpen={setSidebarOpen} />
+      <Header
+        setSidebarOpen={
+          setSidebarOpen
+        }
+      />
 
-      <Sidebar sidebarOpen={sidebarOpen} />
+      <Sidebar
+        sidebarOpen={
+          sidebarOpen
+        }
+      />
 
       <div
         style={{
-          marginLeft: sidebarOpen ? "220px" : "20px",
+          marginLeft:
+            sidebarOpen
+              ? "220px"
+              : "20px",
           marginTop: "100px",
           padding: "20px",
-          transition: "0.3s"
+          transition: "0.3s",
         }}
       >
+
         <Routes>
-          <Route 
-            path="/" 
-            element={<Home />} 
+
+          <Route
+            path="/"
+            element={<Home />}
           />
-          <Route 
-            path="/login" 
-            element={<Login />} 
+
+          <Route
+            path="/login"
+            element={<Login />}
           />
-          <Route 
-            path="/register" 
-            element={<Register />} 
+
+          <Route
+            path="/register"
+            element={<Register />}
           />
-          <Route 
-            path="/video/:id" 
-            element={<VideoPlayer />} 
+
+          <Route
+            path="/video/:id"
+            element={
+              <VideoPlayer />
+            }
           />
-          <Route 
-            path="/channel" 
-            element={<Channel />} 
+
+          <Route
+            path="/channel"
+            element={
+              <ProtectedRoute>
+                <Channel />
+              </ProtectedRoute>
+            }
           />
-          <Route 
-            path="/upload" 
-            element={<UploadVideo />} 
+
+          <Route
+            path="/upload"
+            element={
+              <ProtectedRoute>
+                <UploadVideo />
+              </ProtectedRoute>
+            }
           />
+
           <Route
             path="/edit-video/:id"
-            element={<EditVideo />}
+            element={
+              <ProtectedRoute>
+                <EditVideo />
+              </ProtectedRoute>
+            }
           />
+
         </Routes>
+
       </div>
 
     </BrowserRouter>
