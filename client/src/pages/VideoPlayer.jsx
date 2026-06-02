@@ -46,11 +46,6 @@ function VideoPlayer() {
   }
   };
 
-  if (!text.trim()) {
-    alert("Comment cannot be empty");
-    return;
-  }
-
   const addComment = async () => {
 
     if (!text.trim()) {
