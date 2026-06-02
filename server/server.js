@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res)=>{
-    res.send("It's working");
+    res.send("YouTube Clone API Running");
 });
 
 app.use("/api/auth", authRoutes);
