@@ -125,8 +125,12 @@
     padding: 0 10px;
   }
 
-  .header-center input {
-    width: 180px;
+  .header-center {
+    display: none;
+  }
+
+  .header-right span {
+    display: none;
   }
 
   .header-right {
@@ -134,12 +138,12 @@
   }
 
   .header-right button {
-    padding: 8px 12px;
-    font-size: 12px;
+    padding: 6px 8px;
+    font-size: 11px;
   }
 
-  .username {
-    display: none;
+  .youtube-logo {
+    width: 70px;
   }
 
 }

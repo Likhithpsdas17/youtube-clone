@@ -18,7 +18,7 @@ import NotFound from "./pages/NotFound";
 function App() {
 
   const [sidebarOpen, setSidebarOpen] =
-    useState(true);
+  useState(window.innerWidth > 768);
 
   return (
     <BrowserRouter>
@@ -39,11 +39,17 @@ function App() {
         style={{
           marginLeft:
             sidebarOpen
-              ? "220px"
-              : "20px",
+              ? "200px"
+              : "0px",
+
           marginTop: "100px",
-          padding: "20px",
-          transition: "0.3s",
+
+          padding:
+            window.innerWidth <= 768
+              ? "10px"
+              : "20px",
+
+          transition: "all 0.3s ease",
         }}
       >
 
