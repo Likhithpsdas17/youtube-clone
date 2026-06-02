@@ -13,6 +13,7 @@ import Channel from "./pages/Channel";
 import UploadVideo from "./pages/UploadVideo";
 import EditVideo from "./pages/EditVideo";
 import Footer from "./components/Footer";
+import NotFound from "./pages/NotFound";
 
 function App() {
 
@@ -95,6 +96,11 @@ function App() {
                 <EditVideo />
               </ProtectedRoute>
             }
+          />
+
+          <Route
+            path="*"
+            element={<NotFound />}
           />
 
         </Routes>
