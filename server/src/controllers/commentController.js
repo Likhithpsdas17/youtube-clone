@@ -5,6 +5,18 @@ export const addComment = async (req, res) => {
   try {
     const { text, videoId } = req.body;
 
+    if (
+      !title ||
+      !description ||
+      !videoUrl ||
+      !thumbnailUrl ||
+      !category
+    ) {
+      return res.status(400).json({
+        message: "All fields are required",
+      });
+    }  
+
     const video = await Video.findById(videoId);
 
     if (!video) {
