@@ -1,5 +1,22 @@
 # YouTube Clone - MERN Stack Capstone Project
 
+## Live Deployment
+
+Frontend (Vercel)
+
+https://youtube-clone-chi-mauve.vercel.app/
+
+Backend API (Render)
+
+https://youtube-clone-be44.onrender.com/
+
+## Demo Credentials
+
+Email: [likhith@gmail.com](mailto:likhith@gmail.com)
+
+Password: 123456
+
+
 ## Project Overview
 
 YouTube Clone is a full-stack web application inspired by YouTube, built using the MERN Stack (MongoDB, Express.js, React.js, and Node.js).
