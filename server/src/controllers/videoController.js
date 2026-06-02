@@ -69,14 +69,16 @@ export const getAllVideos = async (req, res) => {
     }
 
     const videos = await Video.find(filter)
-      .populate("channel");
+      .populate("channel")
+      .sort({ createdAt: -1 });
 
     res.status(200).json(videos);
-  } catch (error) {
-    res.status(500).json({
-      message: error.message,
-    });
-  }
+    
+    } catch (error) {
+      res.status(500).json({
+        message: error.message,
+      });
+    }
 };
 
 export const getVideoById = async (req, res) => {
