@@ -5,6 +5,18 @@ export const createChannel = async (req, res) => {
   try {
     const { channelName, description, banner } = req.body;
 
+      if (
+        !title ||
+        !description ||
+        !videoUrl ||
+        !thumbnailUrl ||
+        !category
+      ) {
+        return res.status(400).json({
+          message: "All fields are required",
+        });
+      }
+
     const existingChannel = await Channel.findOne({
       owner: req.user._id,
     });
