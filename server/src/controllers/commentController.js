@@ -1,23 +1,26 @@
 import Comment from "../models/Comment.js";
 import Video from "../models/Video.js";
 
-export const addComment = async (req, res) => {
+export const addComment = async (
+  req,
+  res
+) => {
   try {
-    const { text, videoId } = req.body;
 
-    if (
-      !title ||
-      !description ||
-      !videoUrl ||
-      !thumbnailUrl ||
-      !category
-    ) {
+    const { text, videoId } =
+      req.body;
+
+    if (!text || !text.trim()) {
       return res.status(400).json({
-        message: "All fields are required",
+        message:
+          "Comment cannot be empty",
       });
-    }  
+    }
 
-    const video = await Video.findById(videoId);
+    const video =
+      await Video.findById(
+        videoId
+      );
 
     if (!video) {
       return res.status(404).json({
@@ -25,14 +28,19 @@ export const addComment = async (req, res) => {
       });
     }
 
-    const comment = await Comment.create({
-      text,
-      user: req.user._id,
-      video: videoId,
-    });
+    const comment =
+      await Comment.create({
+        text,
+        user: req.user._id,
+        video: videoId,
+      });
 
     res.status(201).json(comment);
+
   } catch (error) {
+
+    console.log(error);
+
     res.status(500).json({
       message: error.message,
     });
