@@ -12,6 +12,7 @@ import VideoPlayer from "./pages/VideoPlayer";
 import Channel from "./pages/Channel";
 import UploadVideo from "./pages/UploadVideo";
 import EditVideo from "./pages/EditVideo";
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -97,6 +98,8 @@ function App() {
           />
 
         </Routes>
+
+        <Footer />
 
       </div>
 
